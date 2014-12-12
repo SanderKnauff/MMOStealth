@@ -42,7 +42,7 @@ public class Hide extends SkillAction {
         //if (hasSkill(evt.getPlayer())) {
             Player player = evt.getPlayer();
             Block pBlock = player.getLocation().getBlock();
-            if(pBlock.getLightLevel() == 0 || pBlock.getType().equals(Material.DOUBLE_PLANT) || 
+            if(pBlock.getType().equals(Material.DOUBLE_PLANT) || 
                 (pBlock.getRelative(BlockFace.DOWN).getType().equals(Material.HAY_BLOCK) && player.isSneaking())){
                 MMOOutlaws.setInvis(player, 100);
             }
