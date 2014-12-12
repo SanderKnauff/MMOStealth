@@ -33,25 +33,21 @@ public class Hide extends SkillAction {
 
     @Override
     public void registerEvents(PluginManager pm, Plugin pl) {
-        System.out.println("G");
         super.registerEvents(pm, pl);
         plugin = pl;
-        System.out.println("H");
     }
 
     @EventHandler
     public void onPlayerDammage(PlayerMoveEvent evt) {
-        if (PlayerStats.getPlayerStats(evt.getPlayer()).theTree.gotSkill(theSkill())) {
-            System.out.println("R");
+        //if (hasSkill(evt.getPlayer())) {
             Player player = evt.getPlayer();
             Block pBlock = player.getLocation().getBlock();
             if(pBlock.getLightLevel() == 0 || pBlock.getType().equals(Material.DOUBLE_PLANT) || 
                 (pBlock.getRelative(BlockFace.DOWN).getType().equals(Material.HAY_BLOCK) && player.isSneaking())){
-                System.out.println("S");
                 MMOOutlaws.setInvis(player, 100);
             }
             MMOOutlaws.setInvis(player, 0);
-        }
+        //}
     }
 
     @Override

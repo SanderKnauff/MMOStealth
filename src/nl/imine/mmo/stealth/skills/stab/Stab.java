@@ -30,25 +30,22 @@ public class Stab extends SkillAction {
 
     @Override
     public void registerEvents(PluginManager pm, Plugin pl) {
-        System.out.println("A");
         super.registerEvents(pm, pl);
         plugin = pl;
-        System.out.println("B");
     }
 
     @EventHandler
     public void onPlayerDammage(EntityDamageByEntityEvent evt) {
-        System.out.println("C");
         if (evt.getEntity() instanceof Player && evt.getDamager() instanceof Player) {
-            if (PlayerStats.getPlayerStats((Player) evt.getDamager()).theTree.gotSkill(theSkill())) {
+            //if (hasSkill((Player) evt.getDamager())) {
                 Player player = (Player) evt.getEntity();
                 Player damager = (Player) evt.getDamager();
                 double angle = player.getLocation().getYaw() - damager.getLocation().getYaw();
-                System.out.println("RESULT: " + (angle < 45 && angle > -45));
+                System.out.println("RESULT: " + (angle < 45 && angle > -45) + ", " + (evt.getDamage() * (1.25)));
                 if (angle < 45 && angle > -45) {
                     evt.setDamage(evt.getDamage() * (1.25));
                 }
-            }
+            //}
         }
     }
 

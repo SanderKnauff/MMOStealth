@@ -43,15 +43,12 @@ public class Smokebomb extends SkillAction {
 
     @Override
     public void registerEvents(PluginManager pm, Plugin pl) {
-        System.out.println("D");
         super.registerEvents(pm, pl);
-        System.out.println("E");
     }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent evt) {
-        System.out.println("F");
-        if (PlayerStats.getPlayerStats(evt.getPlayer()).theTree.gotSkill(theSkill())) {
+        //if (hasSkill(evt.getPlayer())) {
             if (evt.getAction().equals(Action.RIGHT_CLICK_AIR) || evt.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 Player player = evt.getPlayer();
                 if (player.getItemInHand().getType().equals(Material.COAL)) {
@@ -72,7 +69,7 @@ public class Smokebomb extends SkillAction {
                     evt.setCancelled(true);
                 }
             }
-        }
+        //}
     }
 
     @Override
