@@ -41,7 +41,6 @@ public class Stab extends SkillAction {
                 Player player = (Player) evt.getEntity();
                 Player damager = (Player) evt.getDamager();
                 double angle = player.getLocation().getYaw() - damager.getLocation().getYaw();
-                System.out.println("RESULT: " + (angle < 45 && angle > -45) + ", " + (evt.getDamage() * (1.25)));
                 if (angle < 45 && angle > -45) {
                     evt.setDamage(evt.getDamage() * (1.25));
                 }
