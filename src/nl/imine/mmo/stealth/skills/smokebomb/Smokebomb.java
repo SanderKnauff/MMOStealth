@@ -37,6 +37,8 @@ import org.bukkit.potion.PotionEffectType;
  */
 public class Smokebomb extends SkillAction {
 
+    public static Plugin plugin;
+    
     public static void init() {
         MMOOutlaws.getInstance().addSkillHandler(Smokebomb.class);
     }
@@ -44,6 +46,7 @@ public class Smokebomb extends SkillAction {
     @Override
     public void registerEvents(PluginManager pm, Plugin pl) {
         super.registerEvents(pm, pl);
+        this.plugin = pl;
     }
 
     @EventHandler
@@ -64,7 +67,7 @@ public class Smokebomb extends SkillAction {
                     for (int i = 0; i < 25; i++) {
                         bats.add(player.getWorld().spawnEntity(player.getLocation(), EntityType.BAT));
                     }
-                    new SmokebombTask(bats);
+                    new SmokebombTask(bats, plugin);
                     player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
                     evt.setCancelled(true);
                 }
