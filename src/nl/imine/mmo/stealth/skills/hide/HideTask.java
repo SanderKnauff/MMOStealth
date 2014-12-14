@@ -23,11 +23,10 @@ public class HideTask extends BukkitRunnable {
         for (Player p : plugin.getServer().getOnlinePlayers()) {
             //if (hide.hasSkill(p)) {
                 Block pBlock = p.getLocation().getBlock();
-                if ((pBlock.getType().equals(Material.DOUBLE_PLANT)
-                        || pBlock.getRelative(BlockFace.DOWN).getType().equals(Material.HAY_BLOCK) && p.isSneaking())) {
+                if ((pBlock.getType().equals(Material.DOUBLE_PLANT) || pBlock.getRelative(BlockFace.DOWN).getType().equals(Material.HAY_BLOCK)) && p.isSneaking()) {
                     MMOOutlaws.setInvis(p, 100);
                 }
-                MMOOutlaws.setInvis(p, 0);
+                //MMOOutlaws.setInvis(p, 0);
             //}
         }
     }
