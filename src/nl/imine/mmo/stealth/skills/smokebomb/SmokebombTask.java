@@ -12,7 +12,7 @@ public class SmokebombTask extends BukkitRunnable {
 
     public SmokebombTask(List<Entity> bats, Plugin plugin) {
         this.bats = bats;
-        this.runTask(plugin);
+        this.runTaskLater(plugin, 50L);
     }
 
     public void run() {

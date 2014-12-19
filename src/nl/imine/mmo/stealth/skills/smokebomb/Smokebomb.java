@@ -9,10 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import nl.imine.mmo.stealth.lib.FireworkEffectPlayer;
-import nl.makertim.MMOmain.PlayerStats;
-import nl.makertim.MMOmain.Skill;
+import nl.makertim.MMOmain.lib.InventoryCleanupEvent;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
-import nl.makertim.MMOmain.lib.SkillAction;
+import nl.makertim.MMOmain.skill.Skill;
+import nl.makertim.MMOmain.skill.SkillAction;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -51,7 +51,7 @@ public class Smokebomb extends SkillAction {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent evt) {
-        //if (hasSkill(evt.getPlayer())) {
+        if (gotSkill(evt.getPlayer())) {
             if (evt.getAction().equals(Action.RIGHT_CLICK_AIR) || evt.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 Player player = evt.getPlayer();
                 if (player.getItemInHand().getType().equals(Material.COAL)) {
@@ -72,7 +72,7 @@ public class Smokebomb extends SkillAction {
                     evt.setCancelled(true);
                 }
             }
-        //}
+        }
     }
 
     @Override
@@ -81,9 +81,6 @@ public class Smokebomb extends SkillAction {
     }
 
     @Override
-    public ItemStack getItemStack() {
-        ItemStack i = new ItemStack(Material.FIREWORK_CHARGE);
-        i.getItemMeta().setDisplayName(ChatColor.RESET.toString() + ChatColor.GOLD.toString() + "Smokebomb");
-        return i;
+    public void onInventoryClean(InventoryCleanupEvent ice) {
     }
 }

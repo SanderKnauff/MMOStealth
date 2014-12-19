@@ -2,4 +2,5 @@ main: nl.imine.mmo.stealth.MMOStealth
 name: MMO_Stealth
 version: 1.0.0
 author: Sansko1337
+depend: IMINE_MMO_main
 description: MMO_Stealth Skilltree

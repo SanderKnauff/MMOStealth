@@ -5,10 +5,10 @@
  */
 package nl.imine.mmo.stealth.skills.stab;
 
-import nl.makertim.MMOmain.PlayerStats;
-import nl.makertim.MMOmain.Skill;
+import nl.makertim.MMOmain.lib.InventoryCleanupEvent;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
-import nl.makertim.MMOmain.lib.SkillAction;
+import nl.makertim.MMOmain.skill.Skill;
+import nl.makertim.MMOmain.skill.SkillAction;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -37,14 +37,14 @@ public class Stab extends SkillAction {
     @EventHandler
     public void onPlayerDammage(EntityDamageByEntityEvent evt) {
         if (evt.getEntity() instanceof Player && evt.getDamager() instanceof Player) {
-            //if (hasSkill((Player) evt.getDamager())) {
+            if (gotSkill((Player) evt.getDamager())) {
                 Player player = (Player) evt.getEntity();
                 Player damager = (Player) evt.getDamager();
                 double angle = player.getLocation().getYaw() - damager.getLocation().getYaw();
                 if (angle < 45 && angle > -45) {
                     evt.setDamage(evt.getDamage() * (1.25));
                 }
-            //}
+            }
         }
     }
 
@@ -54,8 +54,6 @@ public class Stab extends SkillAction {
     }
 
     @Override
-    public ItemStack getItemStack() {
-        return null;
+    public void onInventoryClean(InventoryCleanupEvent ice) {
     }
-
 }

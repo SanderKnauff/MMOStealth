@@ -5,9 +5,10 @@
  */
 package nl.imine.mmo.stealth.skills.arrowReturn;
 
-import nl.makertim.MMOmain.Skill;
+import nl.makertim.MMOmain.lib.InventoryCleanupEvent;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
-import nl.makertim.MMOmain.lib.SkillAction;
+import nl.makertim.MMOmain.skill.Skill;
+import nl.makertim.MMOmain.skill.SkillAction;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -39,22 +40,22 @@ public class ArrowReturn extends SkillAction {
     public void onPlayerDammage(ProjectileHitEvent evt) {
         if (evt.getEntity() instanceof Arrow && evt.getEntity().getShooter() instanceof Player) {
             Player player = (Player) evt.getEntity().getShooter();
-            //if (hasSkill(evt.getEntity().getShooter())) {
+            if (gotSkill(player)) {
                 if (Math.random() * 100 < 75) {
                     player.getInventory().addItem(new ItemStack(Material.ARROW, 1));
                 }
-           //}
+            }
         }
     }
 
     @Override
     public Skill theSkill() {
-        return Skill.Stealth.FLAME_ARROW;
+        return Skill.Stealth.INFINITY;
     }
-
+    
     @Override
-    public ItemStack getItemStack() {
-        return null;
+    public void onInventoryClean(InventoryCleanupEvent ice) {
+
     }
 
 }

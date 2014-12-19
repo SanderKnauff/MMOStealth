@@ -5,16 +5,10 @@
  */
 package nl.imine.mmo.stealth.skills.hide;
 
-import nl.makertim.MMOmain.PlayerStats;
-import nl.makertim.MMOmain.Skill;
+import nl.makertim.MMOmain.lib.InventoryCleanupEvent;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
-import nl.makertim.MMOmain.lib.SkillAction;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerMoveEvent;
+import nl.makertim.MMOmain.skill.Skill;
+import nl.makertim.MMOmain.skill.SkillAction;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -40,12 +34,11 @@ public class Hide extends SkillAction {
 
     @Override
     public Skill theSkill() {
-        return Skill.Stealth.NO_SIGHT;
+        return Skill.Stealth.HIDE;
     }
 
     @Override
-    public ItemStack getItemStack() {
-        return null;
+    public void onInventoryClean(InventoryCleanupEvent ice) {
+        
     }
-
 }
