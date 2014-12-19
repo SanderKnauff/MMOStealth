@@ -9,7 +9,6 @@ import nl.makertim.MMOmain.lib.InventoryCleanupEvent;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
 import nl.makertim.MMOmain.skill.Skill;
 import nl.makertim.MMOmain.skill.SkillAction;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
